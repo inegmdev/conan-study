@@ -1,3 +1,5 @@
+SHELL=/bin/bash
+
 rebuild?=0
 
 default: all
@@ -12,11 +14,19 @@ conan_install:
 .PHONY: conan_install
 
 generate:
-	cmake --preset conan-release
+	source ./build/conanbuild.sh && \
+	cmake --version ; \
+	source ./build/deactivate_conanbuild.sh
+
+	source ./build/conanbuild.sh && \
+	cmake --preset conan-release ; \
+	source ./build/deactivate_conanbuild.sh
 .PHONY: generate
 
 build:
-	cmake --build --preset conan-release
+	source ./build/conanbuild.sh && \
+	cmake --build --preset conan-release ; \
+	source ./build/deactivate_conanbuild.sh
 .PHONY: build
 
 run:
