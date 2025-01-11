@@ -23,6 +23,12 @@ int main(void) {
     deflate(&defstream, Z_FINISH);
     deflateEnd(&defstream);
 
+    #ifdef NDEBUG
+    printf("RELEASE MODE\n");
+    #else
+    printf("DEBUG MODE\n");
+    #endif
+
     printf("Uncompressed size is: %lu\n", strlen(buffer_in));
     printf("Compressed size is: %lu\n", strlen(buffer_out));
 
