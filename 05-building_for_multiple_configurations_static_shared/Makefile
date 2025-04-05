@@ -11,7 +11,7 @@ clean:
 .PHONY: clean
 
 conan_install:
-	conan install . --output-folder=build --build=missing --profile ./.conan/profiles/$(buildtype)
+	conan install . --output-folder=build --build=missing --profile ./.conan/profiles/$(buildtype) --options=zlib/1.2.11:shared=True
 .PHONY: conan_install
 
 generate:
